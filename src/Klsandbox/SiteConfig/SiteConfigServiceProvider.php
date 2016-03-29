@@ -29,10 +29,8 @@ class SiteConfigServiceProvider extends ServiceProvider {
 		view()->composer('*', function ($view) {
 			$view->with('config', $this->siteConfig);
 		});
-
-		$this->app->middleware([
-			\Klsandbox\SiteConfig\Http\Middleware\ConfigMiddleware::class,
-		]);
+		
+		$this->app['router']->middleware('config', \Klsandbox\SiteConfig\Http\Middleware\ConfigMiddleware::class);
 	}
 
 	/**
