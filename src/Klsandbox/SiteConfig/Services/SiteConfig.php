@@ -11,8 +11,7 @@ class SiteConfig
 
     public function __get($key)
     {
-        if (self::hasMacro($key))
-        {
+        if (self::hasMacro($key)) {
             return $this->__call($key, []);
         }
 
